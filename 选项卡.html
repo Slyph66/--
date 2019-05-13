@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        #container{
+            margin-top: 20px;
+            margin-left: 33%;
+        }
+        #tabs li{
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            float: left;
+            margin-right: 5px;
+            background-color: cadetblue;
+        }
+        #content{
+            width: 400px;
+            height: 400px;
+            border-top: 1px solid black;
+            background-color: cadetblue;
+        }
+        #tabs .selected{
+            background-color: black;
+            color: white;
+        }
+        #content div{
+            display: none;
+        }
+        #content .selected{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="tabs">
+            <li class="selected">js</li>
+            <li>html</li>
+            <li>css</li>
+        </ul>
+        <div id="content">
+            <div class="selected">js...</div>
+            <div>html...</div>
+            <div>css...</div>
+        </div>
+    </div>
+    <script>
+        var oUl = document.getElementById("tabs");
+        var aLi = oUl.getElementsByTagName("li");
+        var oDiv = document.getElementById("content");
+        var aDiv = oDiv.getElementsByTagName("div");
+        for (var i = 0;i < aLi.length; i ++) {
+            aLi [i].index = i;
+            aLi [i].onclick = function () {
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi [i].className = "";
+                    aDiv [i].className = "";
+                }
+                this .className = "selected";
+                aDiv [this.index].className = "selected";
+            };
+        }
+    </script>
+</body>
+</html>
